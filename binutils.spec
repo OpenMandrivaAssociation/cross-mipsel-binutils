@@ -7,7 +7,7 @@
 %define spu_arches	ppc ppc64
 
 # Define if building a cross-binutils
-%define build_cross	0
+%define	cross	mipsel
 %{expand: %{?cross:	%%global build_cross 1}}
 
 %if %{build_cross}
