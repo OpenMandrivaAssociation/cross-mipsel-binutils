@@ -398,20 +398,20 @@ rm -rf %{buildroot}%{_datadir}/locale/
 rm -f  %{buildroot}%{_prefix}/%{_target_platform}/%{target_cpu}-linux/lib/*.la
 %endif
 
-%find_lang binutils
-%find_lang gas
-%find_lang ld
-%find_lang gold
-%find_lang gprof
-cat gas.lang >> binutils.lang
-cat ld.lang >> binutils.lang
-cat gold.lang>> binutils.lang
-cat gprof.lang >> binutils.lang
+#% find_lang binutils
+#%find_lang gas
+#%find_lang ld
+#%find_lang gold
+#%find_lang gprof
+#cat gas.lang >> binutils.lang
+#cat ld.lang >> binutils.lang
+#cat gold.lang>> binutils.lang
+#cat gprof.lang >> binutils.lang
 
-%find_lang opcodes
-%find_lang bfd
-cat opcodes.lang >> binutils.lang
-cat bfd.lang >> binutils.lang
+#%find_lang opcodes
+#%find_lang bfd
+#cat opcodes.lang >> binutils.lang
+#cat bfd.lang >> binutils.lang
 
 # Alternate binaries
 [[ -d objs-spu ]] && {
@@ -451,7 +451,8 @@ install -m 755 %{SOURCE4} %{buildroot}%{_bindir}/embedspu
 %_remove_install_info standards.info
 %endif
 
-%files -f binutils.lang
+%files 
+#-f binutils.lang
 %{_bindir}/%{program_prefix}addr2line
 %{_bindir}/%{program_prefix}ar
 %{_bindir}/%{program_prefix}as
