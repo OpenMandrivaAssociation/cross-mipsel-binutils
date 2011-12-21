@@ -38,7 +38,7 @@
 Summary:	GNU Binary Utility Development Utilities
 Name:		%{package_prefix}binutils
 Version:	2.22.51.0.1
-Release:	1
+Release:	2
 License:	GPLv3+
 Group:		Development/Other
 URL:		http://sources.redhat.com/binutils/
@@ -258,6 +258,7 @@ CONFIGURE_TOP=.. %configure2_5x $TARGET_CONFIG	--with-bugurl=http://qa.mandriva.
 						--with-fpu=vfpv3-d16 \
 						--with-abi=aapcs-linux \
 %endif
+						--with-sysroot \
 						--disable-werror \
 						--with-separate-debug-dir=%{_prefix}/lib/debug
 # There seems to be some problems with builds of gold randomly failing whenever
@@ -397,22 +398,6 @@ rm -rf %{buildroot}%{_infodir}
 rm -rf %{buildroot}%{_datadir}/locale/
 rm -f  %{buildroot}%{_prefix}/%{_target_platform}/%{target_cpu}-linux/lib/*.la
 %endif
-
-#% find_lang binutils
-#%find_lang gas
-#%find_lang ld
-#%find_lang gold
-#%find_lang gprof
-#cat gas.lang >> binutils.lang
-#cat ld.lang >> binutils.lang
-#cat gold.lang>> binutils.lang
-#cat gprof.lang >> binutils.lang
-
-#%find_lang opcodes
-#%find_lang bfd
-#cat opcodes.lang >> binutils.lang
-#cat bfd.lang >> binutils.lang
-
 # Alternate binaries
 [[ -d objs-spu ]] && {
 destdir=`mktemp -d`
@@ -452,7 +437,6 @@ install -m 755 %{SOURCE4} %{buildroot}%{_bindir}/embedspu
 %endif
 
 %files 
-#-f binutils.lang
 %{_bindir}/%{program_prefix}addr2line
 %{_bindir}/%{program_prefix}ar
 %{_bindir}/%{program_prefix}as
