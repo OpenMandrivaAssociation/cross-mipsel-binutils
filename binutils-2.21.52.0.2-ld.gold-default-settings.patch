@@ -1,0 +1,89 @@
+--- binutils-2.21.52.0.2/gold/options.h.gold_defaults~	2011-06-08 15:31:01.000000000 +0200
++++ binutils-2.21.52.0.2/gold/options.h	2011-07-14 16:42:09.721682080 +0200
+@@ -604,7 +604,7 @@ class General_options
+               N_("Allow unresolved references in shared libraries"),
+               N_("Do not allow unresolved references in shared libraries"));
+ 
+-  DEFINE_bool(as_needed, options::TWO_DASHES, '\0', false,
++  DEFINE_bool(as_needed, options::TWO_DASHES, '\0', true,
+               N_("Only set DT_NEEDED for shared libraries if used"),
+               N_("Always DT_NEEDED for shared libraries"));
+ 
+@@ -765,7 +765,7 @@ class General_options
+ 		N_("Min fraction of empty buckets in dynamic hash"),
+ 		N_("FRACTION"));
+ 
+-  DEFINE_enum(hash_style, options::TWO_DASHES, '\0', "sysv",
++  DEFINE_enum(hash_style, options::TWO_DASHES, '\0', "gnu",
+ 	      N_("Dynamic hash style"), N_("[sysv,gnu,both]"),
+ 	      {"sysv", "gnu", "both"});
+ 
+@@ -844,7 +844,7 @@ class General_options
+ 	      N_("Do not page align data, do not make text readonly"),
+ 	      N_("Page align data, make text readonly"));
+ 
+-  DEFINE_enable(new_dtags, options::EXACTLY_TWO_DASHES, '\0', false,
++  DEFINE_enable(new_dtags, options::EXACTLY_TWO_DASHES, '\0', true,
+ 		N_("Enable use of DT_RUNPATH and DT_FLAGS"),
+ 		N_("Disable use of DT_RUNPATH and DT_FLAGS"));
+ 
+@@ -853,12 +853,12 @@ class General_options
+ 
+   DEFINE_bool_alias(no_undefined, defs, options::TWO_DASHES, '\0',
+ 		    N_("Report undefined symbols (even with --shared)"),
+-		    NULL, false);
++		    NULL, false); // not yet
+ 
+   DEFINE_string(output, options::TWO_DASHES, 'o', "a.out",
+                 N_("Set output file name"), N_("FILE"));
+ 
+-  DEFINE_uint(optimize, options::EXACTLY_ONE_DASH, 'O', 0,
++  DEFINE_uint(optimize, options::EXACTLY_ONE_DASH, 'O', 1,
+               N_("Optimize output file size"), N_("LEVEL"));
+ 
+   DEFINE_string(oformat, options::EXACTLY_TWO_DASHES, '\0', "elf",
+@@ -1037,16 +1037,16 @@ class General_options
+   DEFINE_special(version_script, options::TWO_DASHES, '\0',
+                  N_("Read version script"), N_("FILE"));
+ 
+-  DEFINE_bool(warn_common, options::TWO_DASHES, '\0', false,
+-	      N_("Warn about duplicate common symbols"),
+-	      N_("Do not warn about duplicate common symbols (default)"));
++  DEFINE_bool(warn_common, options::TWO_DASHES, '\0', true,
++	      N_("Warn about duplicate common symbols (default)"),
++	      N_("Do not warn about duplicate common symbols"));
+ 
+   DEFINE_bool(warn_constructors, options::TWO_DASHES, '\0', false,
+ 	      N_("Ignored"), N_("Ignored"));
+ 
+-  DEFINE_bool(warn_execstack, options::TWO_DASHES, '\0', false,
+-	      N_("Warn if the stack is executable"),
+-	      N_("Do not warn if the stack is executable (default)"));
++  DEFINE_bool(warn_execstack, options::TWO_DASHES, '\0', true,
++	      N_("Warn if the stack is executable (default)"),
++	      N_("Do not warn if the stack is executable"));
+ 
+   DEFINE_bool(warn_mismatch, options::TWO_DASHES, '\0', true,
+ 	      NULL, N_("Don't warn about mismatched input files"));
+@@ -1058,9 +1058,9 @@ class General_options
+ 	      N_("Warn when skipping an incompatible library"),
+ 	      N_("Don't warn when skipping an incompatible library"));
+ 
+-  DEFINE_bool(warn_shared_textrel, options::TWO_DASHES, '\0', false,
+-	      N_("Warn if text segment is not shareable"),
+-	      N_("Do not warn if text segment is not shareable (default)"));
++  DEFINE_bool(warn_shared_textrel, options::TWO_DASHES, '\0', true,
++	      N_("Warn if text segment is not shareable (default)"),
++	      N_("Do not warn if text segment is not shareable"));
+ 
+   DEFINE_bool(warn_unresolved_symbols, options::TWO_DASHES, '\0', false,
+ 	      N_("Report unresolved symbols as warnings"),
+@@ -1157,7 +1157,7 @@ class General_options
+   DEFINE_bool(origin, options::DASH_Z, '\0', false,
+ 	      N_("Mark DSO to indicate that needs immediate $ORIGIN "
+                  "processing at runtime"), NULL);
+-  DEFINE_bool(relro, options::DASH_Z, '\0', false,
++  DEFINE_bool(relro, options::DASH_Z, '\0', true,
+ 	      N_("Where possible mark variables read-only after relocation"),
+ 	      N_("Don't mark variables read-only after relocation"));
+   DEFINE_bool(text, options::DASH_Z, '\0', false,
