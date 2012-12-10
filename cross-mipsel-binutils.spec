@@ -487,3 +487,69 @@ install -m 755 %{SOURCE4} %{buildroot}%{_bindir}/embedspu
 %{_libdir}/libopcodes.so
 %{_libdir}/libiberty.a
 %endif
+
+
+%changelog
+* Wed Dec 21 2011 Alexander Khrukin <akhrukin@mandriva.org> 2.22.51.0.1-2
++ Revision: 744113
+- sysroot enabled
+
+* Mon Dec 19 2011 Alexander Khrukin <akhrukin@mandriva.org> 2.22.51.0.1-1
++ Revision: 743643
+- find_lang macro not valid
+- imported package cross-mipsel-binutils
+
+  + Paulo Andrade <pcpa@mandriva.com.br>
+    - Update to cooker binutils
+
+* Tue Mar 17 2009 Per Øyvind Karlsen <peroyvind@mandriva.org> 2.19.51.0.2-1mnb2
++ Revision: 356857
+- cross compile for mipsel
+- copy for mipsel cross build
+- don't ship with PIC libiberty for mips..
+- add missing 'OPTION_FIX_GS2F_KERNEL' enum type in binutils-2.19.51.0.2-mips-ls2f_fetch_fix.patch
+- apply mips patches from 2008.1 Gdium tree
+- enable 64 bit support for mipsel
+- new release: 2.19.51.0.2
+- spec cosmetics
+- remove locale files when doing cross build
+- fix string literal errors when building binutils for mips
+- fix buildrequires
+- sync with 2.19.50.0.1-8.fc11
+- new release
+- sync with binutils-2.18.50.0.9-1.fc10
+- new release
+- sync with binutils-2.18.50.0.8-2.fc10
+- New release: 2.18.50.3
+- sync patches with Fedora
+- regenerate P21 (linux32)
+- don't hardcode vendor name & os in target
+- add translations
+- cosmetics
+- add missing ia64 patch from fedora
+- sync with fedora 2.17.50.0.12-4
+- move checks to %%check
+- s/mandrake/mandriva/
+
+  + Pixel <pixel@mandriva.com>
+    - do not call ldconfig in %%post/%%postun, it is now handled by filetriggers
+    - fix group (#28151)
+
+  + Herton Ronaldo Krzesinski <herton@mandriva.com.br>
+    - Updated to version 2.18.50.0.6
+    - Changed license tag (GPL -> GPLv3+, following policy).
+    - Sync patches with Fedora.
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - replace %%mkrel with %%manbo_mkrel for Manbo Core 1
+    - rebuild
+    - kill re-definition of %%buildroot on Pixel's request
+    - kill file require on info-install
+
+  + Olivier Blin <blino@mandriva.org>
+    - restore BuildRoot
+
+  + Christiaan Welvaart <spturtle@mandriva.org>
+    - match all sparc flavors when checking target_cpu
+    - fix check to build alternate binaries for spu
+
