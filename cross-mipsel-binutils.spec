@@ -41,7 +41,7 @@ Version:	2.22.51.0.1
 Release:	2
 License:	GPLv3+
 Group:		Development/Other
-URL:		http://sources.redhat.com/binutils/
+URL:		https://sources.redhat.com/binutils/
 # official beta snapshot from http://git.kernel.org/?p=linux/kernel/git/hjl/binutils.git;a=summary
 Source0:	http://ftp.kernel.org/pub/linux/devel/binutils/binutils-%{version}.tar.xz
 #Source1:	http://ftp.kernel.org/pub/linux/devel/binutils/binutils-%{version}.tar.bz2.sign
